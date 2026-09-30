@@ -1,0 +1,17 @@
+<tr id="key-row-{{ key.id }}">
+    <td>{{ key.name }}</td>
+    <td><code>{{ key.prefix }}…</code></td>
+    <td>{{ key.created_at.strftime("%Y-%m-%d %H:%M") }}</td>
+    <td>{% if key.revoked %}revoked{% else %}active{% endif %}</td>
+    <td>
+        {% if not key.revoked %}
+        <button
+            hx-post="/keys/{{ key.id }}/revoke"
+            hx-target="#key-row-{{ key.id }}"
+            hx-swap="outerHTML"
+            hx-confirm="Revoke this key? This cannot be undone.">
+            Revoke
+        </button>
+        {% endif %}
+    </td>
+</tr>

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>API Keys</h1>
+
+    <div id="new-key-banner"></div>
+
+    <form hx-post="/keys" hx-target="#key-rows" hx-swap="afterbegin" hx-on::after-request="this.reset()">
+        <input type="text" name="name" placeholder="Key name (e.g. 'staging server')" required>
+        <button type="submit">Create key</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Prefix</th>
+                <th>Created</th>
+                <th>Status</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody id="key-rows">
+            {% for key in keys %}
+                {% include "partials/key_row.html" %}
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

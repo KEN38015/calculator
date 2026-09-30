@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% block content %}
+    <h1>HTMX + FastAPI + SQLite Starter</h1>
+    <p>This is a minimal skeleton wiring together:</p>
+    <ul>
+        <li>FastAPI serving both HTML pages and a JSON API</li>
+        <li>Jinja2 templates rendered server-side, updated in place with HTMX</li>
+        <li>SQLite via SQLAlchemy</li>
+        <li>API key issuance and verification for the JSON endpoints</li>
+    </ul>
+    <p>Go to <a href="/keys">API Keys</a> to create a key, then call the protected
+        API at <code>/api/items</code> with an <code>X-API-Key</code> header.</p>
+{% endblock %}
